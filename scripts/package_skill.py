@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and package a CodeBuddy skill into a distributable zip.
+"""Validate and package an AI-assistant skill into a distributable zip.
 
 Usage:
     python scripts/package_skill.py <path/to/skill-folder> [output-dir]

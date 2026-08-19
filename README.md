@@ -1,6 +1,6 @@
 # Dev Co-Pilot
 
-一套开源的 CodeBuddy 开发协作 Skill。它把 AI 从一个"直接回答 / 直接改代码"的工具，变成**遵守纪律、以证据为导向**的开发协作者。
+一套开源的 AI 开发协作 Skill。它把 AI 从一个"直接回答 / 直接改代码"的工具，变成**遵守纪律、以证据为导向**的开发协作者。
 
 覆盖日常开发全流程：**代码理解 → 改造前业务查询 → 问题排查 → 方案设计 → 代码修改 → 测试验收 → Git → 接口 → 安全 → 上线 → 文档沉淀 → AI 代码长期维护**。
 
@@ -45,15 +45,19 @@ dev-co-pilot/
 
 ## 安装
 
+Skill 按约定存放在用户目录 `~/.codebuddy/skills/`（用户级）或项目目录 `.codebuddy/skills/`（项目级），AI 助手会自动扫描这些位置。仓库自带的安装脚本会自动完成复制。
+
 ### 方式一：用户级（推荐，所有项目生效）
 
-把 skill 安装到 `~/.codebuddy/skills/`，对当前用户的所有项目生效。
+把 skill 安装到用户级目录 `~/.codebuddy/skills/`，对所有项目生效。
 
 ```bash
-# macOS / Linux
+# macOS / Linux（进入仓库根目录后执行）
+cd dev-co-pilot
 ./install.sh
 
-# Windows (PowerShell)
+# Windows PowerShell（进入仓库根目录后执行）
+cd dev-co-pilot
 .\install.ps1
 ```
 
@@ -65,13 +69,51 @@ dev-co-pilot/
 # macOS / Linux
 ./install.sh --project
 
-# Windows (PowerShell)
+# Windows PowerShell
 .\install.ps1 -Project
 ```
 
-> 注意：仓库内 `dev-co-pilot/` 自身已包含 `.codebuddy/skills/` 结构，方便在 clone 后直接作为项目级使用；如需用户级全局生效，运行上面的安装脚本即可。
+> 注意：仓库内 `dev-co-pilot/` 自身已包含 `.codebuddy/skills/` 结构，clone 后可直接作为项目级使用；如需用户级全局生效，运行上面的安装脚本即可。
 
-安装后重启或重载 CodeBuddy 即可激活。
+安装后重启或重载你的 AI 助手即可激活。
+
+### 完整安装步骤（从零开始）
+
+以下是从 clone 到生效的完整命令序列。
+
+**macOS / Linux：**
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/yd3wf/dev-co-pilot.git
+cd dev-co-pilot
+
+# 2. 赋予执行权限并安装（用户级，全局生效）
+chmod +x install.sh
+./install.sh
+
+# 3. 重启或重载你的 AI 助手，即可在任意项目中使用
+```
+
+**Windows PowerShell：**
+
+```powershell
+# 1. 克隆仓库
+git clone https://github.com/yd3wf/dev-co-pilot.git
+cd dev-co-pilot
+
+# 2. 安装（用户级，全局生效）
+.\install.ps1
+
+# 3. 重启或重载你的 AI 助手，即可在任意项目中使用
+```
+
+如果 PowerShell 提示禁止运行脚本，先放开当前会话的执行策略：
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\install.ps1
+```
 
 ## 使用
 
@@ -118,7 +160,7 @@ dev-co-pilot/
 ## 本地校验与打包
 
 ```bash
-# 校验 skill 结构是否合法（需要 CodeBuddy 提供的 skill-creator 工具）
+# 校验 skill 结构是否合法（目录名、frontmatter、必需文件）
 python scripts/package_skill.py .codebuddy/skills/dev-co-pilot ./dist
 ```
 
