@@ -20,7 +20,7 @@ dev-co-pilot/
 ├── install.sh                     # macOS / Linux 安装脚本
 ├── install.ps1                    # Windows 安装脚本
 ├── README.md
-└── .codebuddy/
+└── .claude/
     └── skills/
         └── dev-co-pilot/          # Skill 本体
             ├── SKILL.md           # 全局规则 + 场景路由（入口）
@@ -45,11 +45,11 @@ dev-co-pilot/
 
 ## 安装
 
-Skill 按约定存放在用户目录 `~/.codebuddy/skills/`（用户级）或项目目录 `.codebuddy/skills/`（项目级），AI 助手会自动扫描这些位置。仓库自带的安装脚本会自动完成复制。
+这是一个 Claude Code Skill，CCSwitch 启动或管理 Claude Code 时会沿用 Claude Code 的 Skill 发现规则。Skill 按约定存放在用户目录 `~/.claude/skills/`（用户级）或项目目录 `.claude/skills/`（项目级）；仓库自带的安装脚本会自动完成复制。
 
 ### 方式一：用户级（推荐，所有项目生效）
 
-把 skill 安装到用户级目录 `~/.codebuddy/skills/`，对所有项目生效。
+把 skill 安装到用户级目录 `~/.claude/skills/`，对所有 Claude Code 项目生效。
 
 ```bash
 # macOS / Linux（进入仓库根目录后执行）
@@ -63,7 +63,7 @@ cd dev-co-pilot
 
 ### 方式二：项目级（跟随仓库，团队成员共享）
 
-把 skill 安装到当前项目的 `.codebuddy/skills/`，随仓库分发给协作者。
+把 skill 安装到当前项目的 `.claude/skills/`，随仓库分发给协作者。
 
 ```bash
 # macOS / Linux
@@ -73,9 +73,9 @@ cd dev-co-pilot
 .\install.ps1 -Project
 ```
 
-> 注意：仓库内 `dev-co-pilot/` 自身已包含 `.codebuddy/skills/` 结构，clone 后可直接作为项目级使用；如需用户级全局生效，运行上面的安装脚本即可。
+> 注意：仓库内 `dev-co-pilot/` 自身已包含 `.claude/skills/` 结构，clone 后可直接作为项目级 Skill 使用；如需用户级全局生效，运行上面的安装脚本即可。
 
-安装后重启或重载你的 AI 助手即可激活。
+安装后重启或重载 Claude Code（包括经 CCSwitch 启动的 Claude Code）即可激活。
 
 ### 完整安装步骤（从零开始）
 
@@ -161,7 +161,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 ```bash
 # 校验 skill 结构是否合法（目录名、frontmatter、必需文件）
-python scripts/package_skill.py .codebuddy/skills/dev-co-pilot ./dist
+python scripts/package_skill.py .claude/skills/dev-co-pilot ./dist
 ```
 
 校验通过会生成 `dist/dev-co-pilot.zip`，可用于离线分发。

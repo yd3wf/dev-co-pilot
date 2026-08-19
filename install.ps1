@@ -1,8 +1,8 @@
 # dev-co-pilot installer (Windows / PowerShell)
 #
 # Usage:
-#   .\install.ps1            # install to user scope ($HOME\.codebuddy\skills), available everywhere
-#   .\install.ps1 -Project   # install to current project (.codebuddy\skills), repo-scoped
+#   .\install.ps1            # install to user scope ($HOME\.claude\skills), available everywhere
+#   .\install.ps1 -Project   # install to current project (.claude\skills), repo-scoped
 
 param(
     [switch]$Project
@@ -12,14 +12,14 @@ $ErrorActionPreference = "Stop"
 
 $SkillName = "dev-co-pilot"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$SkillSrc = Join-Path $ScriptDir ".codebuddy\skills\$SkillName"
+$SkillSrc = Join-Path $ScriptDir ".claude\skills\$SkillName"
 
 $Mode = if ($Project) { "project" } else { "user" }
 
 if ($Mode -eq "user") {
-    $Dest = Join-Path $HOME ".codebuddy\skills\$SkillName"
+    $Dest = Join-Path $HOME ".claude\skills\$SkillName"
 } else {
-    $Dest = Join-Path (Get-Location) ".codebuddy\skills\$SkillName"
+    $Dest = Join-Path (Get-Location) ".claude\skills\$SkillName"
 }
 
 if (-not (Test-Path $SkillSrc)) {

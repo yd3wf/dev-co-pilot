@@ -3,14 +3,14 @@
 # dev-co-pilot installer (macOS / Linux)
 #
 # Usage:
-#   ./install.sh            # install to user scope (~/.codebuddy/skills), available everywhere
-#   ./install.sh --project  # install to current project (.codebuddy/skills), repo-scoped
+#   ./install.sh            # install to user scope (~/.claude/skills), available everywhere
+#   ./install.sh --project  # install to current project (.claude/skills), repo-scoped
 #
 set -euo pipefail
 
 SKILL_NAME="dev-co-pilot"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SKILL_SRC="$SCRIPT_DIR/.codebuddy/skills/$SKILL_NAME"
+SKILL_SRC="$SCRIPT_DIR/.claude/skills/$SKILL_NAME"
 
 MODE="user"
 
@@ -19,9 +19,9 @@ if [[ "${1:-}" == "--project" ]]; then
 fi
 
 if [[ "$MODE" == "user" ]]; then
-  DEST="$HOME/.codebuddy/skills/$SKILL_NAME"
+  DEST="$HOME/.claude/skills/$SKILL_NAME"
 else
-  DEST="$(pwd)/.codebuddy/skills/$SKILL_NAME"
+  DEST="$(pwd)/.claude/skills/$SKILL_NAME"
 fi
 
 if [[ ! -d "$SKILL_SRC" ]]; then
