@@ -19,6 +19,54 @@ Output:
 Read-only analysis. Do not modify code.
 ```
 
+## Frontend delivery
+
+**Implement a user-facing interaction without guessing the UI contract**
+
+```
+Implement the confirmed "retry payment" action on the order-detail page. First
+locate the route, component state, existing button/request/error patterns, and
+the server contract. Reuse those patterns and keep the API unchanged unless the
+code proves it is missing. Verify success, loading, failed request, forbidden,
+and duplicate-click behavior. Report changed files and actual checks run.
+```
+
+## Backend delivery
+
+**Implement a rule with ownership and concurrency checks**
+
+```
+Implement cancellation for pending orders only. Trace the API through service,
+state transition, persistence, and messages. Preserve existing error semantics;
+enforce ownership and idempotency at the server boundary. Check duplicate calls,
+concurrent payment callbacks, and message ordering where the current code uses
+them. State the concise plan, make the smallest change, then run relevant tests.
+```
+
+## Full-stack contract
+
+**Find a client-server mismatch before changing either side**
+
+```
+Compare the frontend and backend contract for the order-search filter. Trace each
+filter field from UI state through serialization, server validation/querying, and
+result rendering. Check empty versus absent values, enum/default behavior,
+pagination, permissions, and errors. Give client and server locations for proven
+mismatches and recommend the smallest compatible fix. Do not modify code yet.
+```
+
+## Engineering review
+
+**Review behavior rather than style**
+
+```
+Review the current diff for behavior regressions only. Start from the feature's
+entry points and callers. Check frontend states and request mapping; backend
+authorization, transactions, idempotency, and compatibility; then judge whether
+tests cover the changed risk. Report only actionable, code-supported findings
+with severity, failure scenario, location, and minimal correction.
+```
+
 ## Refactor query
 
 **Query the full business chain before refactoring**

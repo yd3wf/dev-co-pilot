@@ -7,9 +7,9 @@ Read-only analysis prompts for locating and explaining code. Do not modify code 
 Locate the complete implementation of `[feature name]` in the current project. Output:
 
 1. External interfaces and entry files
-2. Controller / Service / Repository or Mapper call chain
+2. Route or page entry, request client, Controller / Service / Repository or Mapper call chain when applicable
 3. Database tables, cache, messages, and external interfaces involved
-4. Success and failure flows
+4. Success, loading/empty, and failure flows visible to callers or users
 5. Key files, classes, methods, and line numbers
 
 This round is read-only analysis. Do not modify code.
@@ -25,7 +25,9 @@ Explain the role of `[class name / method name]` in `[file path]`. Structure the
 5. Exceptions and edge cases
 6. Possible risks
 
-Reference concrete code locations. Do not give conceptual-only descriptions.
+Reference concrete code locations. For UI behavior, include the component state
+and request boundary; for server behavior, include validation, authorization, and
+data-write boundaries. Do not give conceptual-only descriptions.
 
 ## Find callers of an interface
 

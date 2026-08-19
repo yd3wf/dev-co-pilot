@@ -1,6 +1,8 @@
 # Code Modification
 
-Modify code only after a plan is confirmed.
+For a clear implementation request, state the concise approach and file scope,
+then modify. Stop for a material unresolved business, public-contract, or
+destructive-operation decision.
 
 ## Modify according to the confirmed plan
 
@@ -12,10 +14,10 @@ Requirements:
 2. Preserve existing uncommitted changes
 3. Do not change unrelated functionality
 4. Keep compatibility for old callers
-5. Add necessary exception handling, logging, and tests
+5. Add proportionate error handling, diagnostics, and tests for the changed path
 6. After finishing, list the changes made in each file
 
-After modifying, do not commit or push. Wait for my review.
+After modifying, do not commit or push unless explicitly requested.
 
 ## Fix a clear bug
 

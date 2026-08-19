@@ -21,6 +21,15 @@ Analyze in order:
 
 This round is investigation only. Do not modify code.
 
+## Investigate a browser-to-server failure
+
+Investigate `[page/action]` that fails or displays incorrect data. Trace browser
+event -> component state -> request construction -> Network request/response ->
+server entry -> business/data path -> response mapping -> rendered state. Check
+console errors, stale state, request cancellation, client validation, HTTP status,
+contract mismatches, authorization, and sanitized correlation IDs. Separate the
+first proven failure from downstream symptoms. Do not modify code.
+
 ## Investigate abnormal interface responses
 
 Investigate why interface `[interface URL]` returns `[error symptom]`.

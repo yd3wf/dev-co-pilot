@@ -19,7 +19,13 @@ Output:
 6. Exception, retry, rollback, and idempotency handling
 7. Test scenarios
 8. Release and rollback notes
-9. Questions that need my confirmation
+9. Decisions or questions that need confirmation, only when the answer changes
+   business behavior, public contracts, or rollback safety
+
+For non-trivial choices, compare the smallest viable alternatives against the
+project's existing patterns, implementation cost, compatibility, and verification
+cost. Recommend one with evidence; do not manufacture alternatives for a simple
+change.
 
 ## Minimize the change scope
 
@@ -31,7 +37,8 @@ Based on requirement `[requirement]`, give a minimal-change plan. Explicitly lis
 - Public interfaces and default behaviors that stay unchanged
 - How to keep old data, old config, and old callers compatible
 
-Give only the plan first. Do not modify code.
+Give only the plan first. Do not modify code. Make acceptance criteria observable:
+user-visible behavior, contract behavior, data effects, or measurable checks.
 
 ## Reference another project's implementation
 

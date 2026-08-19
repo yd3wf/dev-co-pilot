@@ -5,7 +5,8 @@ Read-only security analysis. Do not modify code.
 ## List security issues only
 
 Perform a read-only security scan of the current codebase. List issues only; do not
-provide fixes. Focus on: authentication, authorization, object ownership, SQL
+provide fixes. Focus on: authentication, authorization, object ownership, client
+route guards versus server authorization, unsafe DOM rendering/XSS, SQL
 injection, command injection, file upload, path traversal, SSRF, XXE,
 deserialization, sensitive information, log leakage, callback signature
 verification, config exposure, and dependency risks.

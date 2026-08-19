@@ -4,7 +4,7 @@ Verify changes rigorously and honestly.
 
 ## Generate a test checklist
 
-Generate a test checklist for feature `[feature name]` covering:
+Generate a proportionate test checklist for feature `[feature name]` covering:
 
 1. Normal flow
 2. Empty, malformed, and boundary-value parameters
@@ -14,6 +14,12 @@ Generate a test checklist for feature `[feature name]` covering:
 6. Transaction rollback
 7. Final consistency of cache, messages, and indexes
 8. Compatibility of old data and old callers
+
+When a frontend is affected, also cover rendering state, loading/empty/error
+feedback, client-side validation, keyboard/focus behavior where relevant, and the
+actual request/response mapping. When a backend is affected, also cover boundary
+validation, ownership, state transitions, transaction/idempotency behavior, and
+database or asynchronous side effects where relevant.
 
 For each item give: preconditions, steps, expected result, and key verification points.
 
@@ -28,6 +34,10 @@ Verification order:
 3. Run `[test command]`
 4. If an interface is available, run `[interface test command]`
 5. Check key logs or database results
+
+For a cross-stack change, add a client-to-server contract or integration check.
+Use the project’s existing tooling; do not add a test framework merely to satisfy
+this checklist.
 
 Distinguish: code errors, test failures, dependency issues, missing config,
 permission issues, and network issues.
